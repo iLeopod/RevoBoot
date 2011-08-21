@@ -151,9 +151,11 @@ void requestMaxTurbo(uint8_t aMaxMultiplier)
 	// up to 5.9 GHz on a good i7-2600K, which is why we check for it here (a quicker boot).
 	
 	initTurboRatios();
-	printf("MinBusRatio: 0x%x\n", gPlatform.CPU.MinBusRatio);
-	printf("MaxBusRatio: 0x%x\n", gPlatform.CPU.MaxBusRatio);
-	sleep(15);
+    /**************************************************************************
+	printf("MinBusRatio: 0x%x\n", gPlatform.CPU.MinBusRatio); MinBusRatio: 0x10
+    printf("MaxBusRatio: 0x%x\n", gPlatform.CPU.MaxBusRatio);MaxBusRatio: 0x22
+    sleep(15);
+     **************************************************************************/
 	// Is the maximum turbo ratio reached already?
 	if (gPlatform.CPU.CoreTurboRatio[0] > aMaxMultiplier) // 0x26 (3.8GHz) > 0x22 (3.4GHz)
 	{
