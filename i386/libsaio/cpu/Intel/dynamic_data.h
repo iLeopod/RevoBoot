@@ -395,6 +395,8 @@ void initCPUStruct(void)
 
 					// Disable C1/C3 state auto demotion i.e. it won't change C3/C6/C7 requests to C1/C3.
 					wrmsr64(MSR_PKG_CST_CONFIG_CONTROL, 0x18008407);
+					msr = rdmsr64(MSR_FLEX_RATIO);
+					wrmsr64(MSR_FLEX_RATIO, (msr & 0xFFFFFFFFFFFEFFFFULL));
 				}
 
 				fsbFrequency = ((tscFrequency / maxBusRatio) - OC_BUSRATIO_CORRECTION);
